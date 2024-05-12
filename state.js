@@ -1,14 +1,37 @@
 
-function statesRender(states){
+// function statesRender(states){
+//     var statesElement = document.getElementById('state-map');
+//     statesElement.classList.add('border-rounded')
+//     var stateBtns = '<h4 class="mb-2">States Map</h4>';
+//     stateBtns = '<p>You can put the map insteaded of it</p>'
+//     states.forEach(stateVal => {
+//         stateBtns += `<a href="./gs.html?stateVal=${stateVal}"><button type="button" id="stateButton-${stateVal}" class="state-Btn btn btn-primary" >${stateVal}</button></a>`;
+//     })
+//     statesElement.innerHTML = stateBtns;
+// }
+
+
+function createFriendlyUrl(stateVal) {
+    // Assuming you want to keep the friendly URL base as `/gs/state/`
+    return `/gs/state/${stateVal}`;
+}
+
+function statesRender(states) {
     var statesElement = document.getElementById('state-map');
-    statesElement.classList.add('border-rounded')
+    statesElement.classList.add('border-rounded');
     var stateBtns = '<h4 class="mb-2">States Map</h4>';
-    stateBtns = '<p>You can put the map insteaded of it</p>'
+    stateBtns += '<p>You can put the map instead of it</p>';  // Corrected a typo here from "instated" to "instead of it"
+
     states.forEach(stateVal => {
-        stateBtns += `<a href="./gs.html?stateVal=${stateVal}"><button type="button" id="stateButton-${stateVal}" class="state-Btn btn btn-primary" >${stateVal}</button></a>`;
-    })
+        const friendlyUrl = createFriendlyUrl(stateVal);
+        stateBtns += `<a href="${friendlyUrl}"><button type="button" id="stateButton-${stateVal}" class="state-Btn btn btn-primary">${stateVal}</button></a>`;
+    });
+
     statesElement.innerHTML = stateBtns;
 }
+
+
+
 
 function analyzeSheetByState(sheetData){
     var stateList = [];
@@ -103,24 +126,3 @@ parseExcel(gsRayExcel);//gs
 
 
 
-function convertToFriendlyUrl(url) {
-    // Parse the URL to get the pathname and search query
-    const urlObj = new URL(url, 'htthttps://fedspay.netlify.app'); // Base URL is needed for relative URLs
-
-    // Get pathname and search parameters
-    const pathname = urlObj.pathname.replace('.html', '');
-    const searchParams = new URLSearchParams(urlObj.search);
-
-    // Build the friendly URL based on the parameters
-    let friendlyUrl = pathname;
-    if (searchParams.has('stateVal')) {
-        friendlyUrl += `/state/${searchParams.get('stateVal')}`;
-    }
-
-    return friendlyUrl;
-}
-
-// Example usage:
-const originalUrl = '/gs.html?stateVal=${stateVal}';
-const friendlyUrl = convertToFriendlyUrl(originalUrl);
-console.log(friendlyUrl);  // Output: /gs/state/MSP
