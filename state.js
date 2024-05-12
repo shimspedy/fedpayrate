@@ -1,35 +1,14 @@
 
-// function statesRender(states){
-//     var statesElement = document.getElementById('state-map');
-//     statesElement.classList.add('border-rounded')
-//     var stateBtns = '<h4 class="mb-2">States Map</h4>';
-//     stateBtns = '<p>You can put the map insteaded of it</p>'
-//     states.forEach(stateVal => {
-//         stateBtns += `<a href="./gs.html?stateVal=${stateVal}"><button type="button" id="stateButton-${stateVal}" class="state-Btn btn btn-primary" >${stateVal}</button></a>`;
-//     })
-//     statesElement.innerHTML = stateBtns;
-// }
-
-
-function createFriendlyUrl(stateVal) {
-    return `/gs/${stateVal}`;
-}
-
-function statesRender(states) {
+function statesRender(states){
     var statesElement = document.getElementById('state-map');
-    statesElement.classList.add('border-rounded');
+    statesElement.classList.add('border-rounded')
     var stateBtns = '<h4 class="mb-2">States Map</h4>';
-    stateBtns += '<p>You can put the map instead of it</p>';
-
+    stateBtns = '<p>You can put the map insteaded of it</p>'
     states.forEach(stateVal => {
-        const friendlyUrl = createFriendlyUrl(stateVal);
-        stateBtns += `<a href="${friendlyUrl}"><button type="button" id="stateButton-${stateVal}" class="state-Btn btn btn-primary">${stateVal}</button></a>`;
-    });
-
+        stateBtns += `<a href="./gs.html?stateVal=${stateVal}"><button type="button" id="stateButton-${stateVal}" class="state-Btn btn btn-primary" >${stateVal}</button></a>`;
+    })
     statesElement.innerHTML = stateBtns;
 }
-
-
 
 
 
