@@ -94,7 +94,7 @@ function parseExcel(excelFilePath){
       .catch((e) => console.error(e));
 }
 
-parseExcel(gsRayExcel);//gs
+
 
 
 

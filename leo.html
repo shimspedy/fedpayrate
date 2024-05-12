@@ -16,24 +16,15 @@
 				<h3 class="text-center">Federal Pay Rate</h3>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			</div>
+			
 		
+			<div class="col-12 py-3">
+				<div class="container" id="state-map">
+					
+				</div>
+			</div>
+
 			<!-- <div class="col-12 mt-2 px-2">
 				<div class="container" >
 					<div class="panel panel-info" >
@@ -60,6 +51,7 @@
 		</div>
 	</body>
 	<script type="text/javascript" src="./config.js"></script>
+	<script type="text/javascript" src="./state.js"></script>
 	<script type="text/javascript" src="./ExcelParser.js"></script>
 	<script type="text/javascript">
 			//this variable is state value to show
@@ -67,5 +59,6 @@
 		//you can call the Excel file loading function of the ExcelParser.js
 		//loadExcelFile(gsRayExcel, stateParam, 'Table-container');
 		loadExcelFile(leoRayExcel, stateParam, 'Table-container-end');
+		parseExcel(leoRayExcel);//gs
 	</script>
 </html>
