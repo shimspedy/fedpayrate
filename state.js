@@ -12,6 +12,48 @@ function statesRender(states){
 
 
 
+// function analyzeSheetByState(sheetData){
+//     var stateList = [];
+//     var stateSheets = [];
+//     var sheetKeys = [];
+//     var stateIndex = 0;
+//     const stateKey = 'LOCNAME';
+//     sheetData.forEach((element, index) => {
+//         element.forEach((item, eIndex) => {
+//                 if(index == 0){
+//                     if(item == stateKey){
+//                         stateIndex = eIndex;
+//                     }	
+//                     sheetKeys = element;
+//                 }else{
+//                     if(eIndex == stateIndex ){
+//                         if(!stateList.find((stateVal) => stateVal == item)){
+//                             stateList.push(item);
+//                             var stateItem = {
+//                                 state: item,
+//                                 sheetkeys: sheetKeys,
+//                                 sheet: [element]
+//                             };
+//                             stateSheets.push(stateItem);
+//                         }else{
+//                             stateSheets.map(sheetItem => {
+//                                 if(sheetItem.state == item){
+//                                     sheetItem.sheet.push(element);
+//                                 }
+//                             })
+//                         };
+                        
+//                     }
+//                 }
+                
+//             });
+//     });
+//     statesRender(stateList);
+// }
+
+
+
+
 function analyzeSheetByState(sheetData){
     var stateList = [];
     var stateSheets = [];
@@ -20,36 +62,49 @@ function analyzeSheetByState(sheetData){
     const stateKey = 'LOCNAME';
     sheetData.forEach((element, index) => {
         element.forEach((item, eIndex) => {
-                if(index == 0){
-                    if(item == stateKey){
-                        stateIndex = eIndex;
-                    }	
-                    sheetKeys = element;
-                }else{
-                    if(eIndex == stateIndex ){
-                        if(!stateList.find((stateVal) => stateVal == item)){
-                            stateList.push(item);
-                            var stateItem = {
-                                state: item,
-                                sheetkeys: sheetKeys,
-                                sheet: [element]
-                            };
-                            stateSheets.push(stateItem);
-                        }else{
-                            stateSheets.map(sheetItem => {
-                                if(sheetItem.state == item){
-                                    sheetItem.sheet.push(element);
-                                }
-                            })
-                        };
-                        
-                    }
+            if(index == 0){
+                // Identifying the index for state information
+                if(item === stateKey){
+                    stateIndex = eIndex;
                 }
-                
-            });
+                // Store the keys from the first row
+                sheetKeys = element;
+            }else{
+                // Process each row after the first
+                if(eIndex === stateIndex ){
+                    // Clean the state name by removing (LEO)
+                    var cleanedState = item.replace(/\(LEO\)/g, '').trim();
+                    if(!stateList.includes(cleanedState)){
+                        // Add to state list if not already included
+                        stateList.push(cleanedState);
+                        // Create a new state item
+                        var stateItem = {
+                            state: cleanedState,
+                            sheetkeys: sheetKeys,
+                            sheet: [element]
+                        };
+                        stateSheets.push(stateItem);
+                    } else {
+                        // Add the current row to the existing state sheet
+                        stateSheets.forEach(sheetItem => {
+                            if(sheetItem.state === cleanedState){
+                                sheetItem.sheet.push(element);
+                            }
+                        });
+                    };
+                }
+            }            
+        });
     });
+    // Render the state list
     statesRender(stateList);
 }
+
+
+
+
+
+
 
 
 function parseExcel(excelFilePath){
