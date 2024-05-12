@@ -93,3 +93,34 @@ function parseExcel(excelFilePath){
 }
 
 parseExcel(gsRayExcel);//gs
+
+
+
+
+
+
+
+
+
+
+function convertToFriendlyUrl(url) {
+    // Parse the URL to get the pathname and search query
+    const urlObj = new URL(url, 'http://example.com'); // Base URL is needed for relative URLs
+
+    // Get pathname and search parameters
+    const pathname = urlObj.pathname.replace('.html', '');
+    const searchParams = new URLSearchParams(urlObj.search);
+
+    // Build the friendly URL based on the parameters
+    let friendlyUrl = pathname;
+    if (searchParams.has('stateVal')) {
+        friendlyUrl += `/state/${searchParams.get('stateVal')}`;
+    }
+
+    return friendlyUrl;
+}
+
+// Example usage:
+const originalUrl = '/gs.html?stateVal=MSP';
+const friendlyUrl = convertToFriendlyUrl(originalUrl);
+console.log(friendlyUrl);  // Output: /gs/state/MSP
