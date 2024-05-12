@@ -12,7 +12,7 @@
 
 
 function createFriendlyUrl(stateVal) {
-    return `/gs/state/${stateVal}`;
+    return `/gs/${stateVal}`;
 }
 
 function statesRender(states) {
