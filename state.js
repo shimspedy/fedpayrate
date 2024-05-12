@@ -12,7 +12,6 @@
 
 
 function createFriendlyUrl(stateVal) {
-    // Assuming you want to keep the friendly URL base as `/gs/state/`
     return `/gs/state/${stateVal}`;
 }
 
@@ -20,7 +19,7 @@ function statesRender(states) {
     var statesElement = document.getElementById('state-map');
     statesElement.classList.add('border-rounded');
     var stateBtns = '<h4 class="mb-2">States Map</h4>';
-    stateBtns += '<p>You can put the map instead of it</p>';  // Corrected a typo here from "instated" to "instead of it"
+    stateBtns += '<p>You can put the map instead of it</p>';
 
     states.forEach(stateVal => {
         const friendlyUrl = createFriendlyUrl(stateVal);
@@ -29,6 +28,7 @@ function statesRender(states) {
 
     statesElement.innerHTML = stateBtns;
 }
+
 
 
 

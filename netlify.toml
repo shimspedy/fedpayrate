@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/gs/state/:stateVal"
+  to = "/gs/state/:stateVal.html"
+  status = 200
