@@ -12,48 +12,6 @@ function statesRender(states){
 
 
 
-// function analyzeSheetByState(sheetData){
-//     var stateList = [];
-//     var stateSheets = [];
-//     var sheetKeys = [];
-//     var stateIndex = 0;
-//     const stateKey = 'LOCNAME';
-//     sheetData.forEach((element, index) => {
-//         element.forEach((item, eIndex) => {
-//                 if(index == 0){
-//                     if(item == stateKey){
-//                         stateIndex = eIndex;
-//                     }	
-//                     sheetKeys = element;
-//                 }else{
-//                     if(eIndex == stateIndex ){
-//                         if(!stateList.find((stateVal) => stateVal == item)){
-//                             stateList.push(item);
-//                             var stateItem = {
-//                                 state: item,
-//                                 sheetkeys: sheetKeys,
-//                                 sheet: [element]
-//                             };
-//                             stateSheets.push(stateItem);
-//                         }else{
-//                             stateSheets.map(sheetItem => {
-//                                 if(sheetItem.state == item){
-//                                     sheetItem.sheet.push(element);
-//                                 }
-//                             })
-//                         };
-                        
-//                     }
-//                 }
-                
-//             });
-//     });
-//     statesRender(stateList);
-// }
-
-
-
-
 function analyzeSheetByState(sheetData){
     var stateList = [];
     var stateSheets = [];
