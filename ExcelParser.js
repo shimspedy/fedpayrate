@@ -54,7 +54,7 @@
 		var sheetKeys = [];
 		sheetData.forEach((element, index) => {
 			element.forEach((item, eIndex) => {
-					if(index == 0){
+					if(index == 1){
 						if(item == stateKey){
 							stateIndex = eIndex;
 						}	
@@ -143,7 +143,7 @@
 					}
 					
 					aItem.forEach((cItem, cIndex ) => {
-							if(cIndex > 1 && aIndex > 1){
+							if(cIndex > 0 && aIndex > 0){
 								strTR +=`<td>$${cItem}</td>`;	
 							}else{
 								strTR +=`<td>${cItem}</td>`;
