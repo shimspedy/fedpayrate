@@ -1,12 +1,8 @@
 	//let stateVal = '';
 	//set the LOCNAME field 
 	const stateKey = 'LOCNAME';
-	//table container ID 
-	//let tableContainerID = 'GSTable-container';
-	//load excel file logic
 	function  loadExcelFile(excelFilePath, state, tableElementID) {
-		//tableContainerID = tableElementID;
-		//stateVal = state;
+	
 		var sheetData = [];
 
 		fetch(excelFilePath)
@@ -147,7 +143,7 @@
 					}
 					
 					aItem.forEach((cItem, cIndex ) => {
-							if(cIndex > 0 && aIndex > 0){
+							if(cIndex > 1 && aIndex > 1){
 								strTR +=`<td>$${cItem}</td>`;	
 							}else{
 								strTR +=`<td>${cItem}</td>`;
