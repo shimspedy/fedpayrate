@@ -54,7 +54,7 @@
 		var sheetKeys = [];
 		sheetData.forEach((element, index) => {
 			element.forEach((item, eIndex) => {
-					if(index == 1){
+					if(index == 0){
 						if(item == stateKey){
 							stateIndex = eIndex;
 						}	
